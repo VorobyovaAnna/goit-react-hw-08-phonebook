@@ -8,9 +8,14 @@ import { changeFilter } from './contactsActions'
 
 
 const items = createReducer([], {
-    [fetchContacts.fulfilled]: (_, action) => action.payload,
-    [postContact.fulfilled]: (state, { payload }) => [payload, ...state],
-    [deleteContact.fulfilled]: (state, { payload }) => state.filter(({id})=> id !==payload.id)
+    [fetchContacts.fulfilled]: (_, { payload }) => payload,
+    [postContact.fulfilled]: (state, { payload }) => [
+    payload,
+    ...state,
+  ],
+    [deleteContact.fulfilled]: (state, { payload }) => {
+    return state.filter((contact) => contact.id !== payload);
+  },
 });
 
 const filter = createReducer('', {

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ContactData, ContactsItem } from './ContactListItem.styled';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactListItem = ({ id, name, number, onDeleteContact }) => {
   return (
